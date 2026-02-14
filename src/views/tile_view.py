@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import pygame
+from tiles.colors import BLACK
 
 class TileView(ABC):
     """
@@ -8,4 +9,4 @@ class TileView(ABC):
     """
     @abstractmethod
     def draw(self, screen: pygame.Surface, rect: tuple[int, int, int, int]):
-        pygame(pygame.sprite.draw(TileView, bgd=pygame.surfarray.pixels_blue ()))
+        pygame.draw.rect(screen, BLACK, rect)
