@@ -4,43 +4,45 @@ echo "   Extraction Game - Auto Launcher"
 echo "========================================"
 echo
 
-# Cherche la meilleure version Python disponible (>= 3.10)
-PY=""
-for v in 3.14 3.13 3.12 3.11 3.10; do
-    if command -v "python$v" &>/dev/null; then
-        PY="python$v"
-        break
-    fi
-done
+echo "[1/3] Verification de Python 3.13..."
 
-# Fallback : essayer python3 puis python
-if [ -z "$PY" ]; then
-    if command -v python3 &>/dev/null; then
-        PY="python3"
-    elif command -v python &>/dev/null; then
-        PY="python"
+if ! command -v python3.13 &>/dev/null; then
+    echo "Python 3.13 non trouve. Installation automatique..."
+    echo
+
+    if command -v apt &>/dev/null; then
+        # Debian / Ubuntu
+        sudo add-apt-repository ppa:deadsnakes/ppa -y
+        sudo apt update
+        sudo apt install python3.13 python3.13-venv python3-pip -y
+    elif command -v brew &>/dev/null; then
+        # macOS
+        brew install python@3.13
+    elif command -v dnf &>/dev/null; then
+        # Fedora
+        sudo dnf install python3.13 -y
+    elif command -v pacman &>/dev/null; then
+        # Arch
+        sudo pacman -S python --noconfirm
+    else
+        echo "ERREUR: Impossible d'installer Python automatiquement."
+        echo "Installez Python 3.13 manuellement depuis python.org"
+        exit 1
     fi
 fi
 
-if [ -z "$PY" ]; then
-    echo "ERREUR: Aucun Python trouve. Installe Python 3.10+ avec ton gestionnaire de paquets."
+if ! command -v python3.13 &>/dev/null; then
+    echo "ERREUR: Python 3.13 introuvable apres installation."
     exit 1
 fi
 
-echo "[1/3] Python detecte :"
-$PY --version
+python3.13 --version
+echo "OK!"
 echo
 
-# Verifie que la version est >= 3.10
-$PY -c "import sys; exit(0 if sys.version_info >= (3,10) else 1)" 2>/dev/null
-if [ $? -ne 0 ]; then
-    echo "ERREUR: Python 3.10 minimum requis. Installe une version plus recente."
-    exit 1
-fi
-
 echo "[2/3] Installation des dependances..."
-$PY -m pip install --upgrade pip setuptools --quiet
-$PY -m pip install pygame pillow --quiet
+python3.13 -m pip install --upgrade pip setuptools --quiet
+python3.13 -m pip install pygame pillow --quiet
 if [ $? -ne 0 ]; then
     echo "ERREUR: Echec de l'installation des dependances."
     exit 1
@@ -51,4 +53,4 @@ echo
 echo "[3/3] Lancement du jeu..."
 echo "========================================"
 echo
-$PY src/main.py
+python3.13 src/main.py
