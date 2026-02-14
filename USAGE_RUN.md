@@ -20,7 +20,7 @@ pyenv install 3.14-dev  # ou 3.14.0 si sortie stable
 # 2. Définir cette version pour le dossier courant
 pyenv local 3.14-dev
 ```
-
+#ouais oauis oausi 
 ## Installation du Projet
 
 Ce projet utilise **Poetry** pour la gestion des dépendances.
