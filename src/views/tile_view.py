@@ -8,4 +8,4 @@ class TileView(ABC):
     """
     @abstractmethod
     def draw(self, screen: pygame.Surface, rect: tuple[int, int, int, int]):
-        pass
+        pygame(pygame.sprite.draw(TileView, bgd=pygame.surfarray.pixels_blue ()))
