@@ -62,3 +62,4 @@ src/
 | `python` n'est pas reconnu | Reinstallez Python en cochant **"Add to PATH"** |
 | `No module named 'pygame'` | Lancez `pip install pygame pillow` |
 | La fenetre s'ouvre et se ferme | Comportement attendu - lisez le code ;) |
+hhhhhhhhh
