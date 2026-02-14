@@ -35,7 +35,7 @@ class GameEngine(Listener):
         """
         new_pos = Position(self.player.pos.x, self.player.pos.y)
         new_pos.move(direction)
-        if not isinstance(self.grid.get_tile(new_pos.x, new_pos.y), WaterTile):
+        if not isinstance(self.grid.get_tile(new_pos.x, new_pos.y), WaterTile): #je capte nisheen rien à ce qu'il se passe
             self.player.move(direction)
             
     def notify(self, event):

@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
+<<<<<<< Updated upstream
 import pygame
 from tiles.colors import BLACK
+=======
+import game
+>>>>>>> Stashed changes
 
 class TileView(ABC):
     """
@@ -8,5 +12,10 @@ class TileView(ABC):
     Les classes qui héritent de TileView doivent implémenter la méthode draw pour dessiner le tile à l'écran.
     """
     @abstractmethod
+<<<<<<< Updated upstream
     def draw(self, screen: pygame.Surface, rect: tuple[int, int, int, int]):
         pygame.draw.rect(screen, BLACK, rect)
+=======
+    def draw(self, screen: game.Surface, rect: tuple[int, int, int, int]):
+        pass
+>>>>>>> Stashed changes

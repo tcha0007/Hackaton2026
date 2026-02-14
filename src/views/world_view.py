@@ -1,4 +1,4 @@
-import pygame
+import game
 from utils import CELL_SIZE, GRID_SIZE
 from tiles.desert_tile import DesertTile
 from tiles.water_tile import WaterTile

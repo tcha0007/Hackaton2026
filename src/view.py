@@ -1,4 +1,4 @@
-import pygame
+import game
 import game
 import eventmanager as evmgr
 from tiles.colors import BLACK
@@ -9,7 +9,7 @@ from views.world_view import WorldView
 
 class GraphicalView(Listener):
     """
-    Cette classe est responsable de l'affichage graphique du jeu en utilisant Pygame. 
+    Cette classe est responsable de l'affichage graphique du jeu en utilisant game.py. 
     Elle écoute les événements du jeu et met à jour l'affichage en conséquence. 
     Elle utilise des sous-vues pour dessiner le monde et le joueur.
     """
@@ -46,9 +46,9 @@ class GraphicalView(Listener):
         if isinstance(event, evmgr.InitializeEvent):
             self.initialize()
         elif isinstance(event, evmgr.QuitEvent):
-            # shut down the pygame graphics
+            # shut down the game.py graphics
             self.isinitialized = False
-            pygame.quit()
+            game.py.quit()
         elif isinstance(event, evmgr.TickEvent):
             if not self.isinitialized:
                 return
@@ -71,18 +71,18 @@ class GraphicalView(Listener):
         self.world_view.draw(self.screen, grid, player.pos)
         self.player_view.draw(self.screen)
 
-        pygame.display.flip()
+        game.py.display.flip()
 
     def initialize(self):
         """
-        Initialise l'affichage graphique du jeu en configurant Pygame et les sous-vues.
+        Initialise l'affichage graphique du jeu en configurant game.py et les sous-vues.
         """
 
-        _ = pygame.init()
-        # pygame.font.init() # Disabled for Python 3.14 compatibility
-        pygame.display.set_caption('Extraction Game')
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        self.clock = pygame.time.Clock()
-        # self.smallfont = pygame.font.Font(None, 40) # Disabled for Python 3.14 compatibility
+        _ = game.py.init()
+        # game.py.font.init() # Disabled for Python 3.14 compatibility
+        game.py.display.set_caption('Extraction Game')
+        self.screen = game.py.display.set_mode((WIDTH, HEIGHT))
+        self.clock = game.py.time.Clock()
+        # self.smallfont = game.py.font.Font(None, 40) # Disabled for Python 3.14 compatibility
         self.smallfont = None
         self.isinitialized = True

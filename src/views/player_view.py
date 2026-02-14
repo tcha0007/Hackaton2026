@@ -1,4 +1,4 @@
-import pygame
+import game
 from utils import CELL_SIZE, GRID_SIZE
 from tiles.colors import BLACK
 
@@ -10,4 +10,4 @@ class PlayerView:
             (GRID_SIZE // 2) * CELL_SIZE + CELL_SIZE // 2,
             (GRID_SIZE // 2) * CELL_SIZE + CELL_SIZE // 2
         )
-        pygame.draw.circle(screen, BLACK, screen_center, CELL_SIZE // 3)
+        game.draw.circle(screen, BLACK, screen_center, CELL_SIZE // 3)
