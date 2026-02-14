@@ -58,3 +58,4 @@ poetry run python src/main.py
 ```
 
 Bon jeu ! 🎮
+sudo apt install python3.13 python3.13-venv python3.13-dev
