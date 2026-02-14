@@ -1,4 +1,4 @@
-# Hackaton206
+# Hackaton2026
 
 # Guide de Lancement du Projet
 
