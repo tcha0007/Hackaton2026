@@ -9,23 +9,19 @@ Pas besoin de Poetry, pyenv, ni de compiler du C++.
 
 ## Lancement rapide
 
-### Windows
+### Windows (via WSL)
 
 Double-cliquez sur **`run.bat`** a la racine du projet.
 
-Ou en terminal :
-```cmd
-run.bat
-```
-
-### Linux / Mac
+### Linux / Mac / WSL
 
 ```bash
+sed -i 's/\r$//' run.sh
 chmod +x run.sh
 ./run.sh
 ```
 
-Les scripts detectent automatiquement votre version de Python, installent les dependances (`pygame`, `pillow`) et lancent le jeu.
+Les scripts installent Python 3.13 si absent, installent les dependances (`pygame`, `pillow`) et lancent le jeu.
 
 ## Lancement manuel
 
@@ -62,4 +58,4 @@ src/
 | `python` n'est pas reconnu | Reinstallez Python en cochant **"Add to PATH"** |
 | `No module named 'pygame'` | Lancez `pip install pygame pillow` |
 | La fenetre s'ouvre et se ferme | Comportement attendu - lisez le code ;) |
-hhhhhhhhh
+| `cannot execute: required file not found` | Lancez `sed -i 's/\r$//' run.sh` puis relancez |

@@ -16,5 +16,5 @@ if errorlevel 1 (
 :: Lance le script Linux dans WSL
 echo Lancement via WSL...
 echo.
-wsl bash -c "cd \"$(wslpath '%~dp0')\" && chmod +x run.sh && ./run.sh"
+wsl bash -c "cd \"$(wslpath '%~dp0')\" && sed -i 's/\r$//' run.sh && chmod +x run.sh && ./run.sh"
 pause
