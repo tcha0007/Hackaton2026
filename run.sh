@@ -39,6 +39,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "[2/3] Installation des dependances..."
+$PY -m pip install --upgrade pip setuptools --quiet
 $PY -m pip install pygame pillow --quiet
 if [ $? -ne 0 ]; then
     echo "ERREUR: Echec de l'installation des dependances."

@@ -42,6 +42,7 @@ if errorlevel 1 (
 )
 
 echo [2/3] Installation des dependances...
+%PY% -m pip install --upgrade pip setuptools --quiet
 %PY% -m pip install pygame pillow --quiet
 if errorlevel 1 (
     echo ERREUR: Echec de l'installation des dependances.
