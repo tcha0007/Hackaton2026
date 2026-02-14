@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(where:*)",
-      "Bash(py --list:*)"
+      "Bash(py --list:*)",
+      "Bash(git -C \"C:\\\\Users\\\\Tahar\\\\Hackaton2026\" update-index --chmod=+x run.sh)"
     ]
   }
 }

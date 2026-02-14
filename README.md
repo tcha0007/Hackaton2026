@@ -1,60 +1,64 @@
-# Hackaton2026
+# Hackaton2026 - Extraction Game
 
-# Guide de Lancement du Projet
+## Prerequis
 
-Ce document explique comment configurer l'environnement et lancer le jeu **Extraction Game**.
+- **Python 3.10** ou superieur
+- C'est tout.
 
-## ⚠️ Prérequis Critique : Python 3.14
+Pas besoin de Poetry, pyenv, ni de compiler du C++.
 
-Ce projet **nécessite impérativement Python 3.14** ou supérieur.
-Les versions antérieures (3.13, 3.12...) ne fonctionneront pas correctement avec certaines fonctionnalités Type Hinting récentes utilisées dans le code.
+## Lancement rapide
 
-### Recommandation : Utiliser `pyenv`
+### Windows
 
-Nous recommandons fortement l'utilisation de **pyenv** pour gérer vos versions de Python sans conflit avec le système.
+Double-cliquez sur **`run.bat`** a la racine du projet.
 
-**Installation de Python 3.14 avec pyenv :**
-
-```bash
-# 1. Installer la version 3.14 (ou la plus récente disponible)
-pyenv install 3.14-dev  # ou 3.14.0 si sortie stable
-
-# 2. Définir cette version pour le dossier courant
-pyenv local 3.14-dev
+Ou en terminal :
+```cmd
+run.bat
 ```
 
-## Installation du Projet
-
-Ce projet utilise **Poetry** pour la gestion des dépendances.
-
-1.  **Installer Poetry** (si ce n'est pas déjà fait) :
-    Suivez la [documentation officielle](https://python-poetry.org/docs/).
-
-2.  **Configurer l'environnement Poetry :**
-    Assurez-vous que Poetry utilise bien votre version 3.14.
-    ```bash
-    poetry env use 3.14
-    ```
-
-3.  **Installer les dépendances :**
-    ```bash
-    poetry install
-    ```
-
-## Compilation des Modules C++
-
-Avant de lancer le jeu, n'oubliez pas de compiler l'extension C++ (voir `USAGE_CPP.md` pour plus de détails) :
+### Linux / Mac
 
 ```bash
-poetry run python build_cpp.py build_ext --inplace
+chmod +x run.sh
+./run.sh
 ```
 
-## Lancer le Jeu
+Les scripts detectent automatiquement votre version de Python, installent les dependances (`pygame`, `pillow`) et lancent le jeu.
 
-Une fois tout installé et compilé, lancez le jeu avec :
+## Lancement manuel
+
+Si vous preferez faire ca a la main :
 
 ```bash
-poetry run python src/main.py
+pip install pygame pillow
+python src/main.py
 ```
 
-Bon jeu ! 🎮
+> Sur Linux, utilisez `python3` et `pip3` si `python` pointe vers Python 2.
+
+## Structure du projet
+
+```
+src/
+  main.py          <- Point d'entree du jeu
+  game.py          <- Moteur de jeu (logique)
+  view.py          <- Affichage graphique (Pygame)
+  controller.py    <- Gestion des inputs clavier
+  eventmanager.py  <- Systeme d'evenements
+  utils.py         <- Utilitaires (Position, constantes)
+  entities/        <- Joueur et entites
+  grid/            <- Grille du monde (generation infinie)
+  tiles/           <- Types de tuiles (desert, eau...)
+  views/           <- Sous-vues (rendu des tuiles, joueur)
+  actions/         <- Actions des entites
+```
+
+## Depannage
+
+| Probleme | Solution |
+|----------|----------|
+| `python` n'est pas reconnu | Reinstallez Python en cochant **"Add to PATH"** |
+| `No module named 'pygame'` | Lancez `pip install pygame pillow` |
+| La fenetre s'ouvre et se ferme | Comportement attendu - lisez le code ;) |
